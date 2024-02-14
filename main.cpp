@@ -1,7 +1,6 @@
 // CISC 125 - Inheritance and Polymorphism
 #include <iomanip>
 #include <iostream>
-#include <sstream>
 #include <string>
 using namespace std;
 
@@ -16,16 +15,17 @@ public:
     double length () const { return len; } // Length of the rectangle
     double perimeter () const { return 2 * (len + wid); } // Perimeter of the rectangle
     void set (double l, double w); // Sets dimensions of the rectangle
-    string str () const; // Returns string describing the shape
     string type () const { return "Rectangle"; } // Return string type of shape
     double width () const { return wid; } // Width of the rectangle
 };
 
+void print_rectangle (const Rectangle& r);
+
 int main () {
     Rectangle r1;
     Rectangle r2(3.5, 1.2);
-    cout << r1.str() << endl;
-    cout << r2.str() << endl;
+    print_rectangle(r1);
+    print_rectangle(r2);
 }
 
 Rectangle::Rectangle (double l, double w) {
@@ -39,13 +39,7 @@ void Rectangle::set (double l, double w) {
     wid = w;
 }
 
-string Rectangle::str () const {
-    // Create output string stream for formatting
-    ostringstream os;
-    // One decimal place for doubles
-    os << fixed << setprecision(1);
-    // Generate string value
-    os << type() << " " << length() << "x" << width();
-    // Return the string
-    return os.str();
+void print_rectangle (const Rectangle& r) {
+    cout << "This " << r.type() << " has a length of " << r.length()
+        << " and width of " << r.width() << endl;
 }
