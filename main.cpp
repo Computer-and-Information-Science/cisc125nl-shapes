@@ -15,6 +15,7 @@ public:
     double area () const { return len * wid; } // Area of the rectangle
     double length () const { return len; } // Length of the rectangle
     double perimeter () const { return 2 * (len + wid); } // Perimeter of the rectangle
+    void set (double l, double w); // Sets dimensions of the rectangle
     string str () const; // Returns string describing the shape
     string type () const { return "Rectangle"; } // Return string type of shape
     double width () const { return wid; } // Width of the rectangle
@@ -29,6 +30,11 @@ int main () {
 
 Rectangle::Rectangle (double l, double w) {
     // Initialize private members with given values
+    len = l;
+    wid = w;
+}
+
+void Rectangle::set (double l, double w) {
     len = l;
     wid = w;
 }
